@@ -1,8 +1,12 @@
 {
   "name": "@s-m-quadri/ltr-bert-sir-client",
-  "version": "0.2.0",
-  "description": "HTTP client for the ltr-bert-sir ELSIE API (s-m-quadri/ltr-bert-sir)",
+  "version": "0.2.1",
+  "description": "HTTP client for the ltr-bert-sir ELSIE API",
   "license": "Apache-2.0",
+  "homepage": "https://huggingface.co/s-m-quadri/ltr-bert-sir",
+  "bugs": {
+    "url": "https://github.com/s-m-quadri/ltr-bert-sir-client-js/issues"
+  },
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
