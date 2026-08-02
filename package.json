@@ -1,9 +1,9 @@
 {
   "name": "@s-m-quadri/ltr-bert-sir-client",
   "version": "0.2.1",
-  "description": "HTTP client for the ltr-bert-sir ELSIE API",
+  "description": "TypeScript client for the ltr-bert-sir ELSIE API (sir-elsie Space)",
   "license": "Apache-2.0",
-  "homepage": "https://huggingface.co/s-m-quadri/ltr-bert-sir",
+  "homepage": "https://huggingface.co/spaces/s-m-quadri/sir-elsie",
   "bugs": {
     "url": "https://github.com/s-m-quadri/ltr-bert-sir-client-js/issues"
   },
@@ -43,7 +43,10 @@
     "information-retrieval",
     "ltr-bert",
     "semantic-search",
-    "elsie"
+    "elsie",
+    "ms-marco",
+    "hybrid-retrieval",
+    "reranker"
   ],
   "devDependencies": {
     "tsup": "^8.5.0",

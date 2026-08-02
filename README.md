@@ -9,11 +9,13 @@ TypeScript and JavaScript client for the **ELSIE** semantic information retrieva
 
 | Resource | Description | URL |
 |----------|-------------|-----|
-| Model | Weights, metrics, `LTRBertSIR` inference | [huggingface.co/s-m-quadri/ltr-bert-sir](https://huggingface.co/s-m-quadri/ltr-bert-sir) |
+| Model | Weights, metrics, offline `LTRBertSIR` | [huggingface.co/s-m-quadri/ltr-bert-sir](https://huggingface.co/s-m-quadri/ltr-bert-sir) |
 | Demo Space (ELSIE) | Interactive UI and REST API | [huggingface.co/spaces/s-m-quadri/sir-elsie](https://huggingface.co/spaces/s-m-quadri/sir-elsie) |
-| Python client | Same API surface for Python 3.10+ | [pypi.org/project/ltr-bert-sir-client](https://pypi.org/project/ltr-bert-sir-client/) |
-| Source (TypeScript) | Package repository | [github.com/s-m-quadri/ltr-bert-sir-client-js](https://github.com/s-m-quadri/ltr-bert-sir-client-js) |
-| MSW paper | Pool-restricted fusion analysis | [mswmanagementj.com article 4038](https://mswmanagementj.com/index.php/home/article/view/4038) |
+| JavaScript client (npm) | This package | [npmjs.com/package/@s-m-quadri/ltr-bert-sir-client](https://www.npmjs.com/package/@s-m-quadri/ltr-bert-sir-client) |
+| Python client (PyPI) | Companion package | [pypi.org/project/ltr-bert-sir-client](https://pypi.org/project/ltr-bert-sir-client/) |
+| Source (TypeScript) | This repository | [github.com/s-m-quadri/ltr-bert-sir-client-js](https://github.com/s-m-quadri/ltr-bert-sir-client-js) |
+| Source (Python) | Companion repository | [github.com/s-m-quadri/ltr-bert-sir-client-py](https://github.com/s-m-quadri/ltr-bert-sir-client-py) |
+| Docker image | Self-hosted ELSIE API | [hub.docker.com/r/smquadri/ltr-bert-sir-elsie](https://hub.docker.com/r/smquadri/ltr-bert-sir-elsie) |
 
 ## Background
 
@@ -23,7 +25,7 @@ Default base URL (`DEFAULT_SIR_API_URL`):
 
 `https://huggingface.co/spaces/s-m-quadri/sir-elsie`
 
-Point `baseUrl` to another deployment when you run the FastAPI app locally or on private infrastructure.
+Point `baseUrl` to another deployment when you run the FastAPI app locally, via Docker, or on private infrastructure.
 
 ## Installation
 
@@ -155,7 +157,7 @@ mountMiniSirApp(document.getElementById("app")!, {
 
 ## Citation
 
-Report results using the model card bibliography on [ltr-bert-sir](https://huggingface.co/s-m-quadri/ltr-bert-sir#citation). Cite MS MARCO when using bundled evaluation qrels or MS MARCO-derived training described there.
+Bibliographies and publication details are on the [ltr-bert-sir model card](https://huggingface.co/s-m-quadri/ltr-bert-sir#citation) on Hugging Face. Cite MS MARCO when using bundled evaluation qrels or MS MARCO-derived training described there.
 
 ## License
 
