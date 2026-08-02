@@ -1,0 +1,36 @@
+{
+  "name": "@s-m-quadri/sir-client",
+  "version": "0.1.0",
+  "description": "HTTP client and types for the SIR semantic IR API (ELSIE / ltr-bert-sir Space)",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --clean",
+    "test": "vitest run",
+    "prepublishOnly": "bun run build"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/s-m-quadri/sir-client-js"
+  },
+  "keywords": ["sir", "information-retrieval", "ltr-bert", "semantic-search"],
+  "devDependencies": {
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.0",
+    "vitest": "^3.2.0"
+  }
+}
