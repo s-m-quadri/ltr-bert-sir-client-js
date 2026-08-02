@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo.svg" alt="ELSIE" width="160" />
+  <img src="logo.svg" alt="ELSIE" width="240" />
 </p>
 
 <h1 align="center">@s-m-quadri/ltr-bert-sir-client</h1>
