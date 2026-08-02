@@ -1,21 +1,29 @@
-# @s-m-quadri/ltr-bert-sir-client
-
 <p align="center">
-  <img src="logo.svg" alt="ELSIE" width="96" height="96" />
+  <img src="logo.svg" alt="ELSIE" width="160" />
 </p>
 
-[![npm](https://img.shields.io/npm/v/@s-m-quadri/ltr-bert-sir-client?logo=npm&logoColor=white&label=npm)](https://www.npmjs.com/package/@s-m-quadri/ltr-bert-sir-client)
-[![PyPI](https://img.shields.io/pypi/v/ltr-bert-sir-client?logo=pypi&logoColor=white&label=PyPI)](https://pypi.org/project/ltr-bert-sir-client/)
-[![Docker](https://img.shields.io/docker/pulls/smquadri/ltr-bert-sir-elsie?logo=docker&logoColor=white&label=Docker)](https://hub.docker.com/r/smquadri/ltr-bert-sir-elsie)
-[![Model](https://img.shields.io/badge/Model-ltr--bert--sir-yellow?logo=huggingface&label=Model)](https://huggingface.co/s-m-quadri/ltr-bert-sir)
-[![Space](https://img.shields.io/badge/Space-sir--elsie-yellow?logo=huggingface&label=Space)](https://huggingface.co/spaces/s-m-quadri/sir-elsie)
-[![GitHub](https://img.shields.io/badge/Source-TypeScript-181717?logo=github&logoColor=white)](https://github.com/s-m-quadri/ltr-bert-sir-client-js)
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue?logo=apache&logoColor=white)](https://www.apache.org/licenses/LICENSE-2.0)
+<h1 align="center">@s-m-quadri/ltr-bert-sir-client</h1>
 
-TypeScript and JavaScript client for the **ELSIE** semantic information retrieval API. The API is served by the [sir-elsie](https://huggingface.co/spaces/s-m-quadri/sir-elsie) Hugging Face Space and implements the hybrid retrieval stack associated with the [ltr-bert-sir](https://huggingface.co/s-m-quadri/ltr-bert-sir) bi-encoder checkpoint: BM25 first stage, pool-restricted LTR-BERT scoring, optional cross-encoder reranking, and library management for long-text corpora.
+<p align="center"><strong>TypeScript and JavaScript client for ELSIE</strong></p>
 
-**Authors:** Syed Minnatullah Quadri, Vrishali A. Chakkarwar  
-**License:** Apache-2.0
+<p align="center">
+  <a href="https://www.npmjs.com/package/@s-m-quadri/ltr-bert-sir-client"><img src="https://img.shields.io/npm/v/@s-m-quadri/ltr-bert-sir-client?logo=npm&logoColor=white&label=npm" alt="npm" /></a>
+  <a href="https://pypi.org/project/ltr-bert-sir-client/"><img src="https://img.shields.io/pypi/v/ltr-bert-sir-client?logo=pypi&logoColor=white&label=PyPI" alt="PyPI" /></a>
+  <a href="https://hub.docker.com/r/smquadri/ltr-bert-sir-elsie"><img src="https://img.shields.io/docker/pulls/smquadri/ltr-bert-sir-elsie?logo=docker&logoColor=white&label=Docker" alt="Docker" /></a>
+  <a href="https://huggingface.co/s-m-quadri/ltr-bert-sir"><img src="https://img.shields.io/badge/Model-ltr--bert--sir-yellow?logo=huggingface&label=Model" alt="Model" /></a>
+  <a href="https://huggingface.co/spaces/s-m-quadri/sir-elsie"><img src="https://img.shields.io/badge/Space-sir--elsie-yellow?logo=huggingface&label=Space" alt="Space" /></a>
+  <a href="https://github.com/s-m-quadri/ltr-bert-sir-client-js"><img src="https://img.shields.io/badge/Source-TypeScript-181717?logo=github&logoColor=white" alt="GitHub" /></a>
+  <a href="https://www.apache.org/licenses/LICENSE-2.0"><img src="https://img.shields.io/badge/License-Apache_2.0-blue?logo=apache&logoColor=white" alt="License" /></a>
+</p>
+
+<p align="center">
+  TypeScript and JavaScript client for the <strong>ELSIE</strong> semantic information retrieval API. The API is served by the <a href="https://huggingface.co/spaces/s-m-quadri/sir-elsie">sir-elsie</a> Hugging Face Space and implements the hybrid retrieval stack associated with the <a href="https://huggingface.co/s-m-quadri/ltr-bert-sir">ltr-bert-sir</a> bi-encoder checkpoint: BM25 first stage, pool-restricted LTR-BERT scoring, optional cross-encoder reranking, and library management for long-text corpora.
+</p>
+
+<p align="center">
+  <strong>Authors:</strong> Syed Minnatullah Quadri, Vrishali A. Chakkarwar<br />
+  <strong>License:</strong> Apache-2.0
+</p>
 
 ## Related resources
 
