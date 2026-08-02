@@ -1,5 +1,9 @@
 # @s-m-quadri/ltr-bert-sir-client
 
+<p align="center">
+  <img src="logo.svg" alt="ELSIE" width="96" height="96" />
+</p>
+
 [![npm](https://img.shields.io/npm/v/@s-m-quadri/ltr-bert-sir-client?logo=npm&logoColor=white&label=npm)](https://www.npmjs.com/package/@s-m-quadri/ltr-bert-sir-client)
 [![PyPI](https://img.shields.io/pypi/v/ltr-bert-sir-client?logo=pypi&logoColor=white&label=PyPI)](https://pypi.org/project/ltr-bert-sir-client/)
 [![Docker](https://img.shields.io/docker/pulls/smquadri/ltr-bert-sir-elsie?logo=docker&logoColor=white&label=Docker)](https://hub.docker.com/r/smquadri/ltr-bert-sir-elsie)
@@ -22,6 +26,7 @@ TypeScript and JavaScript client for the **ELSIE** semantic information retrieva
 5. TypeScript source at [`ltr-bert-sir-client-js`](https://github.com/s-m-quadri/ltr-bert-sir-client-js) on GitHub
 6. Python source at [`ltr-bert-sir-client-py`](https://github.com/s-m-quadri/ltr-bert-sir-client-py) on GitHub
 7. Self-hosted ELSIE API at [`smquadri/ltr-bert-sir-elsie`](https://hub.docker.com/r/smquadri/ltr-bert-sir-elsie) on Docker Hub
+8. Next.js frontend at [`sir-elsie`](https://github.com/s-m-quadri/sir-elsie) on GitHub
 
 ## Background
 
