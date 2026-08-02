@@ -101,6 +101,10 @@ export interface Collection {
   progress_detail?: string;
   seed?: string;
   seed_category?: string;
+  seed_blurb?: string;
+  chunk_scheme?: string;
+  chunk_mode?: string;
+  source_url?: string;
   has_embeddings?: boolean;
 }
 
@@ -148,6 +152,8 @@ export interface SeedSummary {
 export interface SeedDetail extends SeedSummary {
   loaded?: boolean;
   scheme_current?: boolean;
+  preprocessing?: string[];
+  indexing?: string[];
   collection?: Collection & {
     pack_bytes?: number;
     db_bytes?: number;
@@ -168,10 +174,13 @@ export interface CollectionStats {
   chunks?: number;
   chars_total?: number;
   chars_mean?: number;
+  chars_min?: number;
+  chars_max?: number;
   seed?: string;
   db_bytes?: number;
   emb_bytes?: number;
   pack_bytes?: number;
+  meta_bytes?: number;
   status?: string;
   has_embeddings?: boolean;
   encode_seconds?: number;
@@ -192,16 +201,107 @@ export interface CollectionStats {
   bert_model?: string;
   ce_model?: string;
   checkpoint_exists?: boolean;
+  checkpoint_path?: string;
+  checkpoint_bytes?: number;
   alpha_default?: number;
   bm25_k?: number;
   ce_top_k?: number;
   generated_at?: number;
+  searches?: number;
+  last_search_at?: number;
+  titles_sample?: string[];
 }
 
 export interface QrelsStatus {
   has_qrels: boolean;
   queries: number;
   judgments: number;
+}
+
+export interface QrelsExport {
+  queries_tsv: string;
+  qrels_tsv: string;
+  queries: number;
+  judgments: number;
+}
+
+export interface QrelsAnnotateRequest {
+  query: string;
+  judgments?: Record<string, number>;
+  ranked_doc_ids?: string[];
+  qid?: string;
+}
+
+export interface QrelsAnnotateResponse {
+  ok: boolean;
+  qid?: string;
+  queries: number;
+  judgments: number;
+  saved_for_query: number;
+}
+
+export interface LibraryRuntime {
+  mode?: SearchMode;
+  k?: number;
+  bm25_k?: number;
+  alpha?: number;
+  ce_top_k?: number;
+  model?: string;
+  active_collection_id?: string;
+}
+
+export interface LibraryConfig {
+  runtime?: LibraryRuntime;
+  pipeline?: Record<string, unknown>;
+  index_all_running?: boolean;
+  active_collection_id?: string;
+}
+
+export interface LibraryBusyItem {
+  id: string;
+  name?: string;
+  status?: string;
+  progress?: CollectionProgress;
+  progress_label?: string;
+  progress_detail?: string;
+  chunks?: number;
+}
+
+export interface IndexAllProgress {
+  running?: boolean;
+  done?: number;
+  total?: number;
+  pct?: number;
+  message?: string;
+  label?: string;
+  detail?: string;
+  current_name?: string;
+}
+
+export interface LibraryStatus {
+  collections: number;
+  ready: number;
+  encoding: number;
+  ingesting?: number;
+  busy?: LibraryBusyItem[];
+  index_all?: IndexAllProgress;
+  index_all_running?: boolean;
+}
+
+export interface ImportLibraryResult {
+  imported: number;
+  ready?: number;
+  collections?: Collection[];
+  active_collection_id?: string;
+  skipped?: Array<{ reason?: string; seed?: string; name?: string }>;
+  not_ready?: unknown[];
+  manifest?: { source_collections?: number };
+}
+
+export interface EvaluateResult {
+  macro?: Record<string, number>;
+  n_queries?: number;
+  mode?: string;
 }
 
 export interface SirClientOptions {
@@ -212,3 +312,11 @@ export interface SirClientOptions {
 
 export const DEFAULT_SIR_API_URL =
   "https://huggingface.co/spaces/s-m-quadri/sir-elsie";
+
+export const SEARCH_MODES: SearchMode[] = [
+  "bm25",
+  "blend",
+  "semantic",
+  "ce_cascade",
+  "ce_only",
+];

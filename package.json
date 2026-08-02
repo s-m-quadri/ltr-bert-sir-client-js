@@ -1,7 +1,7 @@
 {
-  "name": "@s-m-quadri/sir-client",
-  "version": "0.1.0",
-  "description": "HTTP client and types for the SIR semantic IR API (ELSIE / ltr-bert-sir Space)",
+  "name": "@s-m-quadri/ltr-bert-sir-client",
+  "version": "0.2.0",
+  "description": "HTTP client for the ltr-bert-sir ELSIE API (s-m-quadri/ltr-bert-sir)",
   "license": "Apache-2.0",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -12,11 +12,17 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
-    }
+    },
+    "./ui": {
+      "types": "./dist/ui/index.d.ts",
+      "import": "./dist/ui/index.js",
+      "require": "./dist/ui/index.cjs"
+    },
+    "./theme.css": "./dist/ui/theme.css"
   },
-  "files": ["dist"],
+  "files": ["dist", "examples"],
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts --clean",
+    "build": "tsup src/index.ts src/ui/index.ts --format esm,cjs --dts --clean && mkdir -p dist/ui && cp src/ui/theme.css dist/ui/theme.css",
     "test": "vitest run",
     "prepublishOnly": "bun run build"
   },
@@ -25,9 +31,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/s-m-quadri/sir-client-js"
+    "url": "https://github.com/s-m-quadri/ltr-bert-sir-client-js"
   },
-  "keywords": ["sir", "information-retrieval", "ltr-bert", "semantic-search"],
+  "keywords": [
+    "ltr-bert-sir",
+    "sir",
+    "information-retrieval",
+    "ltr-bert",
+    "semantic-search",
+    "elsie"
+  ],
   "devDependencies": {
     "tsup": "^8.5.0",
     "typescript": "^5.9.0",

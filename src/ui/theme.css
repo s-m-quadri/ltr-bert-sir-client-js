@@ -1,0 +1,100 @@
+:root {
+  --sir-bg: #0f1115;
+  --sir-surface: #171a21;
+  --sir-border: #2a2f3a;
+  --sir-text: #e8e6e3;
+  --sir-muted: #9aa3b2;
+  --sir-accent: #c9a227;
+  --sir-accent-dim: #8a7420;
+  --sir-ok: #3d8b6e;
+  --sir-danger: #c45c5c;
+  --sir-radius: 10px;
+  --sir-font: system-ui, sans-serif;
+  --sir-mono: ui-monospace, monospace;
+}
+
+.sir-mini {
+  font-family: var(--sir-font);
+  color: var(--sir-text);
+  background: var(--sir-bg);
+  border: 1px solid var(--sir-border);
+  border-radius: var(--sir-radius);
+  padding: 1rem;
+  max-width: 52rem;
+}
+
+.sir-mini h1 {
+  margin: 0 0 0.75rem;
+  font-size: 1.1rem;
+  color: var(--sir-accent);
+}
+
+.sir-mini .sir-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.sir-mini select,
+.sir-mini input,
+.sir-mini button,
+.sir-mini textarea {
+  font: inherit;
+  border-radius: 8px;
+  border: 1px solid var(--sir-border);
+  background: var(--sir-surface);
+  color: var(--sir-text);
+  padding: 0.45rem 0.6rem;
+}
+
+.sir-mini button {
+  background: var(--sir-accent-dim);
+  border-color: var(--sir-accent);
+  cursor: pointer;
+}
+
+.sir-mini button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.sir-mini textarea {
+  width: 100%;
+  min-height: 3rem;
+  resize: vertical;
+}
+
+.sir-mini .sir-meta {
+  font-size: 0.8rem;
+  color: var(--sir-muted);
+  margin-bottom: 0.5rem;
+}
+
+.sir-mini .sir-hit {
+  border-top: 1px solid var(--sir-border);
+  padding: 0.65rem 0;
+}
+
+.sir-mini .sir-hit h3 {
+  margin: 0 0 0.25rem;
+  font-size: 0.95rem;
+}
+
+.sir-mini .sir-hit p {
+  margin: 0;
+  color: var(--sir-muted);
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.sir-mini .sir-score {
+  font-family: var(--sir-mono);
+  font-size: 0.75rem;
+  color: var(--sir-accent);
+}
+
+.sir-mini .sir-error {
+  color: var(--sir-danger);
+  font-size: 0.85rem;
+}

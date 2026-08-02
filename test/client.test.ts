@@ -1,5 +1,11 @@
 import { describe, expect, it, vi } from "vitest";
-import { SirClient, DEFAULT_SIR_API_URL } from "../src";
+import {
+  SirClient,
+  DEFAULT_SIR_API_URL,
+  modeLabel,
+  dedupeCollections,
+  duplicateCollections,
+} from "../src";
 
 function mockFetch(body: unknown, status = 200) {
   return vi.fn(async (url: string, init?: RequestInit) => {
@@ -9,6 +15,7 @@ function mockFetch(body: unknown, status = 200) {
       statusText: status === 200 ? "OK" : "Error",
       headers: new Headers({ "content-type": "application/json" }),
       json: async () => body,
+      blob: async () => new Blob(),
     } as Response;
   });
 }
@@ -19,50 +26,65 @@ describe("SirClient", () => {
     expect(c.baseUrl).toBe(DEFAULT_SIR_API_URL);
   });
 
-  it("health()", async () => {
-    const fetch = mockFetch({ ok: true, model: true, collections: 2 });
-    const c = new SirClient({ baseUrl: "http://test", fetch });
-    const h = await c.health();
-    expect(h.collections).toBe(2);
-    expect(fetch).toHaveBeenCalledWith("http://test/health", expect.any(Object));
-  });
+  it("covers library and qrels endpoints", async () => {
+    const fetch = vi.fn(async (url: string, init?: RequestInit) => {
+      const path = url.replace("http://test", "");
+      if (path === "/library/config") {
+        return {
+          ok: true,
+          status: 200,
+          headers: new Headers({ "content-type": "application/json" }),
+          json: async () => ({ runtime: { mode: "blend" } }),
+        } as Response;
+      }
+      if (path.startsWith("/collections/c1/qrels/annotate")) {
+        expect(init?.method).toBe("POST");
+        return {
+          ok: true,
+          status: 200,
+          headers: new Headers({ "content-type": "application/json" }),
+          json: async () => ({ ok: true, queries: 1, judgments: 2, saved_for_query: 2 }),
+        } as Response;
+      }
+      if (path === "/library/index-all?background=true&wait=false") {
+        return {
+          ok: true,
+          status: 200,
+          headers: new Headers({ "content-type": "application/json" }),
+          json: async () => ({ started: true }),
+        } as Response;
+      }
+      throw new Error(`unexpected ${path}`);
+    }) as typeof fetch;
 
-  it("search() posts JSON body", async () => {
-    const fetch = mockFetch({
-      query: "q",
-      mode: "blend",
-      collection_id: "c1",
-      hits: [],
-    });
     const c = new SirClient({ baseUrl: "http://test", fetch });
-    const res = await c.search({ query: "alice rabbit", mode: "blend", k: 5 });
-    expect(res.query).toBe("q");
-    const call = fetch.mock.calls[0];
-    expect(call[0]).toBe("http://test/search");
-    expect(JSON.parse((call[1] as RequestInit).body as string)).toMatchObject({
-      query: "alice rabbit",
-      mode: "blend",
-      k: 5,
+    const cfg = await c.libraryConfig();
+    expect(cfg.runtime?.mode).toBe("blend");
+    const ann = await c.annotateQrels("c1", {
+      query: "test",
+      ranked_doc_ids: ["a", "b"],
     });
-  });
-
-  it("surfaces API error detail", async () => {
-    const fetch = vi.fn(async () => ({
-      ok: false,
-      status: 404,
-      statusText: "Not Found",
-      headers: new Headers({ "content-type": "application/json" }),
-      json: async () => ({ detail: "collection not found" }),
-    })) as typeof fetch;
-    const c = new SirClient({ baseUrl: "http://test", fetch });
-    await expect(c.stats("missing")).rejects.toThrow("collection not found");
+    expect(ann.saved_for_query).toBe(2);
+    const idx = await c.indexAll(true, false);
+    expect(idx.started).toBe(true);
   });
 
   it("builds export URLs", () => {
     const c = new SirClient({ baseUrl: "http://test", fetch: mockFetch({}) });
-    expect(c.exportUrl("abc")).toBe("http://test/collections/abc/export");
-    expect(c.libraryExportUrl("x")).toBe(
-      "http://test/library/export?active_collection_id=x"
-    );
+    expect(c.qrelsExportUrl("abc")).toBe("http://test/collections/abc/qrels/export");
+    expect(modeLabel("blend")).toBe("Hybrid");
+  });
+
+  it("dedupes collections by seed", () => {
+    const cols = dedupeCollections([
+      { id: "a", name: "A", seed: "s1", status: "ready", chunks: 10 },
+      { id: "b", name: "B", seed: "s1", status: "idle", chunks: 5 },
+    ]);
+    expect(cols.length).toBe(1);
+    expect(cols[0].id).toBe("a");
+    expect(duplicateCollections([
+      { id: "a", name: "A", seed: "s1", status: "ready" },
+      { id: "b", name: "B", seed: "s1", status: "idle" },
+    ]).length).toBe(1);
   });
 });

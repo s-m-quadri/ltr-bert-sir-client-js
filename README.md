@@ -1,20 +1,20 @@
-# @s-m-quadri/sir-client
+# @s-m-quadri/ltr-bert-sir-client
 
-TypeScript client and types for the [SIR ELSIE Space](https://huggingface.co/spaces/s-m-quadri/sir-elsie) API.
+TypeScript client for the [ltr-bert-sir](https://huggingface.co/s-m-quadri/ltr-bert-sir) ELSIE API ([sir-elsie Space](https://huggingface.co/spaces/s-m-quadri/sir-elsie)).
 
 ## Install
 
 ```bash
-npm install @s-m-quadri/sir-client
+npm install @s-m-quadri/ltr-bert-sir-client
 # or
-bun add @s-m-quadri/sir-client
-pnpm add @s-m-quadri/sir-client
+bun add @s-m-quadri/ltr-bert-sir-client
+pnpm add @s-m-quadri/ltr-bert-sir-client
 ```
 
 ## Usage
 
 ```ts
-import { createSirClient, DEFAULT_SIR_API_URL } from "@s-m-quadri/sir-client";
+import { createSirClient, DEFAULT_SIR_API_URL } from "@s-m-quadri/ltr-bert-sir-client";
 
 const sir = createSirClient();
 console.log(await sir.health());
@@ -24,6 +24,15 @@ const results = await sir.search({
   mode: "blend",
   k: 10,
 });
+```
+
+Mini UI:
+
+```ts
+import { mountMiniSirApp } from "@s-m-quadri/ltr-bert-sir-client/ui";
+import "@s-m-quadri/ltr-bert-sir-client/theme.css";
+
+mountMiniSirApp(document.getElementById("app")!);
 ```
 
 Local API:
@@ -43,15 +52,18 @@ bun run build
 ## Repository layout
 
 ```text
-sir-client-js/
+ltr-bert-sir-client-js/
 ├── .github/workflows/ci.yml
 ├── src/
 │   ├── client.ts
 │   ├── types.ts
-│   └── index.ts
+│   ├── format.ts
+│   ├── hints.ts
+│   ├── collections.ts
+│   └── ui/
+├── examples/basic-ui/
 ├── test/client.test.ts
 ├── package.json
-├── tsconfig.json
 └── LICENSE
 ```
 
