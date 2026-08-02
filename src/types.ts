@@ -311,6 +311,9 @@ export interface SirClientOptions {
 }
 
 export const DEFAULT_SIR_API_URL =
+  "https://s-m-quadri-sir-elsie.hf.space";
+
+export const DEFAULT_SIR_HUB_URL =
   "https://huggingface.co/spaces/s-m-quadri/sir-elsie";
 
 export const SEARCH_MODES: SearchMode[] = [

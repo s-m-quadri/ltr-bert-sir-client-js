@@ -47,11 +47,15 @@ export class SirClient {
 
   constructor(options: SirClientOptions = {}) {
     this.baseUrl = (options.baseUrl ?? DEFAULT_SIR_API_URL).replace(/\/$/, "");
-    this.fetchFn = options.fetch ?? globalThis.fetch;
-    this.timeoutMs = options.timeoutMs;
-    if (!this.fetchFn) {
+    const nativeFetch = globalThis.fetch;
+    if (!nativeFetch && !options.fetch) {
       throw new Error("fetch is not available; pass fetch in SirClientOptions");
     }
+    this.fetchFn =
+      options.fetch ??
+      ((input: RequestInfo | URL, init?: RequestInit) =>
+        nativeFetch.call(globalThis, input, init));
+    this.timeoutMs = options.timeoutMs;
   }
 
   url(path: string): string {

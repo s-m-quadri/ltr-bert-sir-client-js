@@ -1,6 +1,6 @@
 {
   "name": "@s-m-quadri/ltr-bert-sir-client",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "TypeScript client for the ltr-bert-sir ELSIE API (sir-elsie Space)",
   "license": "Apache-2.0",
   "homepage": "https://huggingface.co/spaces/s-m-quadri/sir-elsie",
