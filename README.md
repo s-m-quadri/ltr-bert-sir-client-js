@@ -1,5 +1,13 @@
 # @s-m-quadri/ltr-bert-sir-client
 
+[![npm](https://img.shields.io/npm/v/@s-m-quadri/ltr-bert-sir-client?logo=npm&logoColor=white&label=npm)](https://www.npmjs.com/package/@s-m-quadri/ltr-bert-sir-client)
+[![PyPI](https://img.shields.io/pypi/v/ltr-bert-sir-client?logo=pypi&logoColor=white&label=PyPI)](https://pypi.org/project/ltr-bert-sir-client/)
+[![Docker](https://img.shields.io/docker/pulls/smquadri/ltr-bert-sir-elsie?logo=docker&logoColor=white&label=Docker)](https://hub.docker.com/r/smquadri/ltr-bert-sir-elsie)
+[![Model](https://img.shields.io/badge/Model-ltr--bert--sir-yellow?logo=huggingface&label=Model)](https://huggingface.co/s-m-quadri/ltr-bert-sir)
+[![Space](https://img.shields.io/badge/Space-sir--elsie-yellow?logo=huggingface&label=Space)](https://huggingface.co/spaces/s-m-quadri/sir-elsie)
+[![GitHub](https://img.shields.io/badge/Source-TypeScript-181717?logo=github&logoColor=white)](https://github.com/s-m-quadri/ltr-bert-sir-client-js)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue?logo=apache&logoColor=white)](https://www.apache.org/licenses/LICENSE-2.0)
+
 TypeScript and JavaScript client for the **ELSIE** semantic information retrieval API. The API is served by the [sir-elsie](https://huggingface.co/spaces/s-m-quadri/sir-elsie) Hugging Face Space and implements the hybrid retrieval stack associated with the [ltr-bert-sir](https://huggingface.co/s-m-quadri/ltr-bert-sir) bi-encoder checkpoint: BM25 first stage, pool-restricted LTR-BERT scoring, optional cross-encoder reranking, and library management for long-text corpora.
 
 **Authors:** Syed Minnatullah Quadri, Vrishali A. Chakkarwar  
@@ -7,15 +15,13 @@ TypeScript and JavaScript client for the **ELSIE** semantic information retrieva
 
 ## Related resources
 
-| Resource | Description | URL |
-|----------|-------------|-----|
-| Model | Weights, metrics, offline `LTRBertSIR` | [huggingface.co/s-m-quadri/ltr-bert-sir](https://huggingface.co/s-m-quadri/ltr-bert-sir) |
-| Demo Space (ELSIE) | Interactive UI and REST API | [huggingface.co/spaces/s-m-quadri/sir-elsie](https://huggingface.co/spaces/s-m-quadri/sir-elsie) |
-| JavaScript client (npm) | This package | [npmjs.com/package/@s-m-quadri/ltr-bert-sir-client](https://www.npmjs.com/package/@s-m-quadri/ltr-bert-sir-client) |
-| Python client (PyPI) | Companion package | [pypi.org/project/ltr-bert-sir-client](https://pypi.org/project/ltr-bert-sir-client/) |
-| Source (TypeScript) | This repository | [github.com/s-m-quadri/ltr-bert-sir-client-js](https://github.com/s-m-quadri/ltr-bert-sir-client-js) |
-| Source (Python) | Companion repository | [github.com/s-m-quadri/ltr-bert-sir-client-py](https://github.com/s-m-quadri/ltr-bert-sir-client-py) |
-| Docker image | Self-hosted ELSIE API | [hub.docker.com/r/smquadri/ltr-bert-sir-elsie](https://hub.docker.com/r/smquadri/ltr-bert-sir-elsie) |
+1. Bi-encoder weights, metrics, and offline `LTRBertSIR` inference at [`s-m-quadri/ltr-bert-sir`](https://huggingface.co/s-m-quadri/ltr-bert-sir) on Hugging Face
+2. Interactive ELSIE demo and REST API at [`s-m-quadri/sir-elsie`](https://huggingface.co/spaces/s-m-quadri/sir-elsie) on Hugging Face Spaces
+3. JavaScript and TypeScript client (this package) at [`@s-m-quadri/ltr-bert-sir-client`](https://www.npmjs.com/package/@s-m-quadri/ltr-bert-sir-client) on npm
+4. Python client at [`ltr-bert-sir-client`](https://pypi.org/project/ltr-bert-sir-client/) on PyPI
+5. TypeScript source at [`ltr-bert-sir-client-js`](https://github.com/s-m-quadri/ltr-bert-sir-client-js) on GitHub
+6. Python source at [`ltr-bert-sir-client-py`](https://github.com/s-m-quadri/ltr-bert-sir-client-py) on GitHub
+7. Self-hosted ELSIE API at [`smquadri/ltr-bert-sir-elsie`](https://hub.docker.com/r/smquadri/ltr-bert-sir-elsie) on Docker Hub
 
 ## Background
 
